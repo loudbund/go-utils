@@ -12,7 +12,9 @@ type uConfig struct {
 
 // 对外函数1
 func Config() *uConfig {
-	return &uConfig{}
+	return &uConfig{
+		cfgCache: map[string]*config.Config{},
+	}
 }
 
 // 对外函数2：读取字符串内容配置
