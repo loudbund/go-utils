@@ -1,13 +1,14 @@
 package main
 
 import (
-    _ "github.com/loudbund/go-json"
-    _ "github.com/loudbund/go-mysql"
-    _ "github.com/loudbund/go-pool"
-    _ "github.com/loudbund/go-progress"
-    _ "github.com/loudbund/go-request"
-    _ "github.com/loudbund/go-socket"
+	_ "github.com/loudbund/go-json/json_v1"
+	_ "github.com/loudbund/go-mysql/mysql_v1"
+	_ "github.com/loudbund/go-pool/pool_v1"
+	_ "github.com/loudbund/go-progress/progress_v1"
+	_ "github.com/loudbund/go-request/request_v1"
+	_ "github.com/loudbund/go-socket/socket_v1"
+	_ "github.com/loudbund/go-utils/utils_v1"
 )
 
-func main(){
+func main() {
 }
