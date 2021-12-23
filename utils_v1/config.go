@@ -17,24 +17,24 @@ func Config() *uConfig {
 
 // 对外函数2：读取字符串内容配置
 func (u *uConfig) GetCfgString(cfgFile, section, option string) (value string, err error) {
-	cfg := readCfgFile(cfgFile)
+	cfg := u.readCfgFile(cfgFile)
 	return cfg.String(section, option)
 }
 
 // 对外函数3：读取int内容配置
 func (u *uConfig) GetCfgInt(cfgFile, section, option string) (value int, err error) {
-	cfg := readCfgFile(cfgFile)
+	cfg := u.readCfgFile(cfgFile)
 	return cfg.Int(section, option)
 }
 
 // 内部函数1：读取默认配置
 func (u *uConfig) readCfgFile(cfgFile string) *config.Config {
-	if _, ok := cfgCache[cfgFile]; !ok {
+	if _, ok := u.cfgCache[cfgFile]; !ok {
 		c, err1 := config.ReadDefault(cfgFile)
 		if err1 != nil {
 			log.Panic("读取配置文件失败:" + cfgFile)
 		}
-		cfgCache[cfgFile] = c
+		u.cfgCache[cfgFile] = c
 	}
-	return cfgCache[cfgFile]
+	return u.cfgCache[cfgFile]
 }
