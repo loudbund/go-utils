@@ -71,6 +71,19 @@ func (t *uTime) Date2Time(date string) time.Time {
 // ListenEvent: 监听的通道;
 // cronMill:定时触发时间(毫秒);
 // fEvents:触发事件回调函数；参数为触发类型，一般用不上的；函数返回true则继续监听，否则退出监听
+// -------------------------------------------
+// 示例：
+// func ExampleSimpleMsgCron() {
+// 	var ListenCh = make(chan bool)
+// 	// 1、触发一次执行
+// 	go func() { ListenCh <- true }()
+// 	// 2、启动即时和定时模块
+// 	utils_v1.Time().SimpleMsgCron(ListenCh, 1000*60, func(IsInterval bool) bool {
+// 		// 2.1、处理
+// 		fmt.Print("SimpleMsgCron run event!")
+// 		return true
+// 	})
+// }
 func (t *uTime) SimpleMsgCron(ExListenCh chan bool, cronMill int, fEvent func(IsInterval bool) bool) {
 
 	var (

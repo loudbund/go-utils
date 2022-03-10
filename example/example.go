@@ -25,4 +25,22 @@ func main() {
 			fmt.Println("haha.conf 文件不存在")
 		}
 	}
+
+	// Time().SimpleMsgCron
+	ExampleSimpleMsgCron()
+}
+
+// Time().SimpleMsgCron
+func ExampleSimpleMsgCron() {
+	var ListenCh = make(chan bool)
+
+	// 1、触发一次执行
+	go func() { ListenCh <- true }()
+
+	// 2、启动即时和定时模块
+	utils_v1.Time().SimpleMsgCron(ListenCh, 1000*60, func(IsInterval bool) bool {
+		// 2.1、处理
+		fmt.Print("SimpleMsgCron run event!")
+		return true
+	})
 }
